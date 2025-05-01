@@ -1,65 +1,47 @@
-# ⚽ Offside Detection using Computer Vision
+⚽ Offside Detection using Computer Vision
+🎯 Problem: In football matches, accurately determining offside in real-time is a significant challenge for referees. Some situations can remain unclear even after replays.
 
-🎯 **المشكلة**: في مباريات كرة القدم، تحديد التسلل بدقة لحظية هو تحدي كبير للحكام. بعض الحالات تكون غير واضحة حتى في الإعادة.
+👨‍💻 Solution: We developed a tool that uses computer vision to automatically detect offside by calculating the players' positions relative to the end line of the pitch and identifying the player closest to this line.
 
-👨‍💻 **الحل**: طورنا أداة تعتمد على الرؤية الحاسوبية لتحديد التسلل تلقائيًا، عبر حساب موقع اللاعبين نسبةً لخط نهاية الملعب، وتحديد اللاعب الأقرب لهذا الخط.
+🧠 How Does the System Work?
+We analyze the image using OpenCV algorithms, following these steps:
 
----
+Line Detection: We use Canny edge detection and Hough Transform to identify the lines on the field, focusing on the penalty box line or the end line as a reference.
 
-## 🧠 كيف يعمل النظام؟
+Player Detection: We rely on Haar Cascades to detect the players' positions.
 
-نقوم بتحليل الصورة باستخدام خوارزميات OpenCV، ونتبع الخطوات التالية:
+Finding the Nearest Player: We calculate the vertical distance between each player and the reference line.
 
-1. **كشف الخطوط**: نستخدم Canny وHough Transform لاكتشاف خطوط الملعب، ونركز على خط منطقة الجزاء (box line) أو خط نهاية الملعب كمرجع.
-2. **كشف اللاعبين**: نعتمد على Haar Cascades لاكتشاف مواقع اللاعبين.
-3. **تحديد أقرب لاعب**: نحسب المسافة العمودية بين كل لاعب والخط المرجعي.
-4. **رسم النتائج**: نرسم كل لاعب مع الخط الواصل لأقرب نقطة على الخط، ونرتبهم حسب المسافة.
+Visualizing the Results: We draw each player with a line to the nearest point on the reference line, sorting them by distance.
 
-🔍 نعتبر أقرب لاعب إلى خط نهاية الملعب هو المؤثر الأساسي في تحديد التسلل.
+🔍 The player closest to the end line is considered the key factor in determining offside.
 
----
+🛠️ Tools Used
+Python
 
-## 🛠️ الأدوات المستخدمة
+OpenCV
 
-- Python
-- OpenCV
-- NumPy
-- Google Colab (لتجربة سريعة)
+NumPy
 
----
+Google Colab (for quick testing)
 
-## 🖼️ مثال من الإخراج
+🖼️ Sample Output
+<p align="center"> <img src="output-image.png" alt="Sample Output" width="500"/> </p>
+⚙️ How to Use
+Install the required dependencies:
 
-<p align="center">
-  <img src="output-image.png" alt="Sample Output" width="500"/>
-</p>
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Run the code from the src/ folder:
 
----
+bash
+Copy
+Edit
+python src/detect_offside.py
+🎨 UI/UX Design
+You can browse the full design on Figma: Link to Figma
 
-## ⚙️ طريقة الاستخدام
-
-1. ثبت المتطلبات:
-   ```bash
-   pip install -r requirements.txt
-
-2. شغّل الكود من مجلد `src/`:
-   ```bash
-   python src/detect_offside.py
-
-
-
-
-## 🎨 تصميم الواجهة (UI/UX)
-
-يمكنك تصفح الواجهة كاملة عبر Figma:
-
-
-
-
-
-
-🤝 فريق العمل
-يوسف العبري
-
-[]
-
+🤝 Team Members
+Yousef Alabri – AI Developer
